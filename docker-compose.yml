@@ -1,0 +1,31 @@
+name: bodygraph-api-php
+
+services:
+  nginx:
+    container_name: bodygraph-api-php--nginx
+    image: nginx:latest
+    ports:
+      - ${API_EXPOSE_PORT}:80
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php-fpm
+    networks:
+      - bodygraph-api-network
+
+  php-fpm:
+    container_name: bodygraph-api-php--php-fpm
+    build:
+      context: ./docker/php
+    environment:
+      BODYGRAPH_API_URL: ${BODYGRAPH_API_URL}
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - bodygraph-api-network
+
+networks:
+  bodygraph-api-network:
+    name: bodygraph-api-network
+    driver: bridge

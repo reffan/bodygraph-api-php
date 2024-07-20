@@ -1,0 +1,11 @@
+.DS_Store
+
+.env*
+!.env.template
+
+ravemandala.svg
+
+RESOURCES/
+BACKUP/
+OLD/
+TODO.md
