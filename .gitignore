@@ -3,7 +3,9 @@
 .env*
 !.env.template
 
-ravemandala.svg
+src/data/ravemandala/*
+!src/data/ravemandala/.gitkeep
+!src/data/ravemandala/theme.php.template
 
 RESOURCES/
 BACKUP/

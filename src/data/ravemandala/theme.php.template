@@ -1,0 +1,62 @@
+<?php
+
+  // Template
+  
+  $theme = [
+    'body' => [
+      'palevioletred', 0.06,
+      'palevioletred', 0,
+    ],
+    'centers' => [
+      'ajna' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'crown' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'ego' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'g' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'root' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'sacral' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'emotion' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'spleen' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+      'throat' => [ 
+        'base' => [ 'coral', 'coral' ],
+        'active' => [ 'lightsalmon', 'coral' ],
+      ],
+    ],
+    'gates' => [
+      'base' => [ 
+        'white', 'white', 'darkslateblue' 
+      ],
+      'active' => [ 
+        'darkslateblue', 'darkslateblue', 'white' 
+      ],
+    ],
+    'channels' => [
+      'base' => [ 
+        'white'
+      ],
+      'active' => [ 'lavender' ],
+    ],
+  ];

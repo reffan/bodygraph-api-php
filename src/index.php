@@ -6,21 +6,24 @@
 
   $birth_datetime = null;
   
-  if (isset($_GET['year']))
-  $birth_datetime = [
-    'date' => [
-        'year' => $_GET['year'],
-        'month' => $_GET['month'],
-        'day' => $_GET['day']
-      ],
-      'time' => [
-        'hour' => $_GET['hour'],
-        'min' => $_GET['min']
-      ],
-      'timezone' => [
-        'offset' => $_GET['offset']
-      ]
-  ];
+  if (isset($_GET['year'])) {
+    $birth_datetime = [
+      'date' => [
+          'year' => $_GET['year'],
+          'month' => $_GET['month'],
+          'day' => $_GET['day']
+        ],
+        'time' => [
+          'hour' => $_GET['hour'],
+          'min' => $_GET['min']
+        ],
+        'timezone' => [
+          'offset' => $_GET['offset']
+        ]
+    ];
+  }
+
+  $today = new DateTime();
 
 ?>
 <!DOCTYPE html>
@@ -31,41 +34,89 @@
     <title>Bodygraph API | Karmic Works</title>
   </head>
   <body>
+    <h1>Bodygraph API</h1>
     <div style='display: flex; flex-direction: col;'>
     <div style='flex: 1;'>
-      <h1>Input</h1>
+      <h2>Input</h2>
       <form method="GET">
         <label for="year">Year</label><br />
-        <input name="year" id="year" value="1988" type="number" min="1970" max="2070" step="1"/><br />
+        <input 
+          name="year" 
+          id="year" 
+          placeholder="<?= $today->format('Y'); ?>" 
+          value="<?= $today->format('Y'); ?>" 
+          type="number" 
+          min="1970" 
+          max="2099" 
+          step="1"
+        /><br />
         <br />
         <label for="month">Month</label><br />
-        <input name="month" id="month" value="12" type="number" min="1" max="12" step="1"/><br />
+        <input 
+          name="month" 
+          id="month" 
+          placeholder="<?= $today->format('n'); ?>" 
+          value="<?= $today->format('n'); ?>" 
+          type="number" 
+          min="1" 
+          max="12" 
+          "1"/><br 
+        />
         <br />
         <label for="day">Day</label><br />
-        <input name="day" id="day" value="12" type="number" min="1" max="31" step="1"/><br />
+        <input 
+          name="day" 
+          id="day" 
+          placeholder="<?= $today->format('j'); ?>" 
+          value="<?= $today->format('j'); ?>" 
+          type="number" 
+          min="1" 
+          max="31" 
+          step="1"
+        /><br />
         <br />
         <label for="hour">Hour (24)</label><br />
-        <input name="hour" id="hour" value="23" type="number" min="0" max="23" step="1"/><br />
+        <input 
+          name="hour" 
+          id="hour" 
+          placeholder="<?= $today->format('G'); ?>" 
+          value="<?= $today->format('G'); ?>" 
+          type="number" 
+          min="0" 
+          max="23" 
+          step="1"
+        /><br />
         <br />
         <label for="min">Minutes</label><br />
-        <input name="min" id="min" value="42" type="number" min="0" max="59" step="1"/><br />
+        <input 
+          name="min" 
+          id="min" 
+          placeholder="<?= $today->format('i'); ?>" 
+          value="<?= $today->format('i'); ?>" 
+          type="number" 
+          min="0" 
+          max="59" 
+          step="1"
+        /><br />
         <br />
         <label for="offset">Timezone Offset (From UTC)</label><br />
-        <input name="offset" id="offset" value="2" type="number" min="-24" max="24" step="0.25"/><br />
+        <input 
+          name="offset" 
+          id="offset" 
+          placeholder=="0"
+          value="0" 
+          type="number" 
+          min="-24" 
+          max="24" 
+          step="0.25"
+        /><br />
         <br />
         <button type="submit">Submit</button>
       </form>
     </div>
     <div style='flex: 1;'>
-      <h1>Output</h1>
-        <?php
-
-          if (!$birth_datetime) {
-            return;
-          }
-
-        ?>
-        <h2>SVG</h2>
+      <h2>Output</h2>
+        <h3>SVG</h3>
         <?php
 
           if (!$birth_datetime) {
@@ -73,11 +124,10 @@
           }
 
           $ravemandala = call_bodygraph_api('/modes/ravemandala.php', $birth_datetime);
-          
           ppr($ravemandala);
 
         ?>
-        <h2>JSON</h2>
+        <h3>JSON</h3>
         <?php
 
           if (!$birth_datetime) {

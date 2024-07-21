@@ -33,3 +33,26 @@
     curl_close($curl);
     return $response;
   }
+
+  function move_xml_elements_to_top(SimpleXMLElement $xml, $ids) {
+    $dom = dom_import_simplexml($xml);
+    $xpath = new DOMXPath($dom->ownerDocument);
+
+    $nodes = [];
+
+    foreach ($ids as $id) {
+        $node = $xpath->query("//*[@id='$id']")->item(0);
+        if ($node) {
+            $nodes[] = $node;
+        }
+    }
+
+    foreach ($nodes as $node) {
+      if ($node->parentNode) {
+        $parent = $node->parentNode;
+
+        $parent->removeChild($node);
+        $parent->appendChild($node);
+      }
+    }
+  }
