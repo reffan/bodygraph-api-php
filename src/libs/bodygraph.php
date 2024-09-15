@@ -418,7 +418,8 @@
       $authority = null;
 
       if (count($defined_centers) === 0) {
-        $authority = BODYGRAPH_AUTHORITIES['LUNAR'];
+        // $authority = BODYGRAPH_AUTHORITIES['LUNAR'];
+        $authority = BODYGRAPH_AUTHORITIES['LUNA'];
         return $authority;
       } 
 
